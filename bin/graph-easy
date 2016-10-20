@@ -7,4 +7,15 @@ hash docker > /dev/null 2>&1 || {
   exit 1
 }
 
-docker run -it --rm -v $PWD:$PWD -w $PWD tsub/graph-easy $@
+TARGET_PATH=$@
+TARGET_FILE=$TARGET_PATH
+MOUNT_OPTION=""
+
+if [ -f "$TARGET_PATH" ]; then
+  TARGET_FILE=$(basename $TARGET_PATH)
+  ABS_PATH=$(cd $(dirname $TARGET_PATH) && pwd)/$TARGET_FILE
+
+  MOUNT_OPTION="-v $ABS_PATH:/$TARGET_FILE"
+fi
+
+docker run -i --rm $MOUNT_OPTION tsub/graph-easy $TARGET_FILE
