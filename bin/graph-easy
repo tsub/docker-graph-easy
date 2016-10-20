@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+set -eu
+
+hash docker > /dev/null 2>&1 || {
+  echo "Could not find Docker. Please install Docker first."
+  exit 1
+}
+
+docker run -it --rm -v $PWD:$PWD -w $PWD tsub/graph-easy $@
