@@ -13,4 +13,10 @@ $ echo '[a]->[b]' | graph-easy
 +---+     +---+
 | a | --> | b |
 +---+     +---+
+
+$ echo '[a]->[b]' > graph.txt
+$ graph-easy graph.txt
++---+     +---+
+| a | --> | b |
++---+     +---+
 ```
