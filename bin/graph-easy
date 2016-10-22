@@ -10,6 +10,11 @@ hash docker > /dev/null 2>&1 || {
 TARGET_PATH=$@
 TARGET_FILE=$TARGET_PATH
 MOUNT_OPTION=""
+TTY_OPTION=""
+
+if [ -t 0 ]; then
+  TTY_OPTION="-t"
+fi
 
 if [ -f "$TARGET_PATH" ]; then
   TARGET_FILE=$(basename $TARGET_PATH)
@@ -18,4 +23,4 @@ if [ -f "$TARGET_PATH" ]; then
   MOUNT_OPTION="-v $ABS_PATH:/$TARGET_FILE"
 fi
 
-docker run -i --rm $MOUNT_OPTION tsub/graph-easy $TARGET_FILE
+docker run -i --rm $TTY_OPTION $MOUNT_OPTION tsub/graph-easy $TARGET_FILE
