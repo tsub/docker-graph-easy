@@ -1,5 +1,5 @@
 FROM alpine:3.4
-MAINTAINER tsub <tsubasatakayama511@gmail.com>
+LABEL maintainer "tsubasatakayama511@gmail.com"
 
 ENV BUILD_DEPENDENCIES="build-base"
 
