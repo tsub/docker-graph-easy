@@ -1,4 +1,4 @@
-FROM alpine:3.10.2
+FROM alpine:3.10.3
 LABEL maintainer "tsubasatakayama511@gmail.com"
 
 ENV BUILD_DEPENDENCIES="build-base"
